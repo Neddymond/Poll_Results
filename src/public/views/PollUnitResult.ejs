@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Individual Polling Unit Results</title>
+</head>
+<body>
+  <div class="table data">
+    <h2>Polling Unit Result</h2>
+    <table border="1">
+      <tr>
+        <th>Result ID</th>
+        <th>Unique ID</th>
+        <th>Party</th>
+        <th>Party Score</th>
+        <th>Entered By</th>
+        <th>IP Address</th>
+      </tr>
+
+      <% 
+      if (pollResults.length != 0) {
+        var i = 1;
+        pollResults.forEach(function(data) {
+      %>
+      <tr>
+        <td><%=data.result_id %></td>
+        <td><%=data.polling_unit_uniqueid %></td>
+        <td><%=data.party_abbreviation %></td>
+        <td><%=data.party_score %></td>
+        <td><%=data.entered_by_user %></td>
+        <td><%=data.user_ip_address %></td>
+      </tr>
+      <% i++; }) %>
+      <% } else { %>
+        <tr>
+          <td colspan="7">No Data Found</td>
+        </tr>
+      % } %>
+    </table>
+  </div>
+</body>
+</html>

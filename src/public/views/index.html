@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poll Result</title>
+</head>
+<body>
+  <form action="/new-poll-results" method="POST">
+    <label for="uniqueid">Unique ID</label>
+    <input id="uniqueid" type="text" name="uniqueid"><br>
+    <label for="party">Party</label>
+    <input id="party" type="text" name="party"><br>
+    <label for="partyscore">Party Score</label>
+    <input id="partyscore" type="text" name="party_score"><br>
+    <label for="user">User</label>
+    <input id="user" type="text" name="user"><br>
+    <label for="ipaddress">User IP Address</label>
+    <input id="ipaddress" type="text" name="user_ip_address"><br>
+    <button type="submit">Add</button>
+  </form>
+</body>
+</html>
