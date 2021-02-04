@@ -1,0 +1,23 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.text-input {
+  padding: 10px;
+  margin: 10px 10px;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  width: 30%;
+}
+
+button {
+  padding: 10px 30px;
+  border-radius: 50px;
+  border: none;
+  background-color: rgb(63, 63, 239);
+  color: white !important;
+  text-decoration: none;
+  margin: 20px 110px !important;
+  font-size: 16px !important;
+  width: 15%;
+}

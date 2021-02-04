@@ -14,7 +14,7 @@ router.get("/poll-results/:uniqueid", function(req, res) {
   try {
     db.query(query, polling_unit_uniqueid, (err, data) => {
       if (err) throw err;
-      res.render("pollUnitResult", { title: "Polling Unit Result", pollResults: data });
+      res.render("PollUnitResult", { title: "Polling Unit Results", pollResults: data });
     });
   } catch (e) {
     res.status(500).send(e);
@@ -22,19 +22,20 @@ router.get("/poll-results/:uniqueid", function(req, res) {
 });
 
 /** Display the summed total result of all the polling units under any particular local government */
-router.get("/total-poll-results/:lga_name", function(req, res) {
+router.get("/total-poll-results", function(req, res) {
   let query = `select sum(party_score) total
   from announced_pu_results
   inner join polling_unit on polling_unit.uniqueid = announced_pu_results.polling_unit_uniqueid
   inner join lga using (lga_id)
   where lga_name = ?`;
 
-  let lga_name = [req.params.lga_name];
+  let lga_name = [req.query.lga_name];
+  console.log(lga_name)
 
   try {
     db.query(query, lga_name, function(err, data) {
       if (err) throw err;
-      res.send(data);
+      res.render("LGATotalPollResults", { title: "LGA Total Polling Units Result", result: data });
     });
   } catch (e) {
     res.status(500).send(e);
@@ -57,7 +58,7 @@ router.post("/new-poll-results", function(req, res) {
   try {
     db.query(query, values, function(err, data) {
       if (err) throw err;
-      res.send(data);
+      res.render("index", { title: "New Polling Unit Results"});
     });
   } catch (e) {
     res.status(500).send(e);
